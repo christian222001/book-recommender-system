@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pencarian Rekomendasi Buku</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .text-black {
+            color: rgb(10, 0, 0);
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 1px solid #000; /* Outline for the card */
+        }
+        .card-img-top {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .card-body {
+            text-align: center;
+        }
+        .content-container {
+            background-color: #d3eafc; /* Warna biru muda */
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            border: 1px solid #000; /* Outline for the content container */
+        }
+        .footer {
+            background-color: #ffffff;
+            padding: 20px 0;
+            text-align: left;
+            border: 1px solid #000; /* Outline for the footer */
+        }
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .footer .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .footer .description {
+            flex: 1;
+            padding: 0 20px;
+            text-align: left;
+        }
+        .footer .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer .social-icons a {
+            margin: 0 10px;
+            font-size: 20px;
+        }
+        .separator {
+            border-left: 2px solid #000;
+            height: 50px; /* Sesuaikan tinggi garis pemisah */
+            margin: 0 20px;
+        }
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: #cac9c9; /* Background abu-abu muda */
+        }
+        .container-flex {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensure content stretches to the bottom */
+        }
+        .navbar {
+            margin-bottom: 0; /* Menghilangkan margin bawah navbar */
+            background-color: #d3eafc; /* Warna yang sama dengan footer */
+            padding: 0; /* Menghilangkan padding default */
+            border: 1px solid #000; /* Outline for the navbar */
+        }
+        .navbar .container-fluid {
+            display: flex;
+            justify-content: flex-start; /* Mengatur elemen ke kiri */
+            align-items: center;
+            padding: 10px 20px; /* Padding atas dan bawah, kiri dan kanan */
+        }
+        .navbar .navbar-left {
+            display: flex;
+            align-items: center;
+            margin-right: 110px; /* Menambahkan jarak antara logo dan menu */
+        }
+        .navbar .navbar-left img {
+            height: 50px; /* Sesuaikan ukuran logo */
+            margin-right: 10px; /* Jarak antara logo dan teks */
+        }
+        .navbar .navbar-left .navbar-brand {
+            font-size: 24px; /* Sesuaikan ukuran teks */
+            margin: 0;
+            padding: 0;
+            line-height: 50px; /* Mengatur line-height agar sejajar dengan logo */
+            font-weight: bold; /* Menjadikan teks bold */
+        }
+        .navbar-center {
+            display: flex;
+            justify-content: flex-start; /* Mengatur elemen ke kiri */
+            align-items: center;
+        }
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+        .navbar-nav li {
+            float: none;
+            display: inline-block;
+            margin: 0 15px; /* Mengatur margin horizontal antar item */
+        }
+        .navbar-nav li a {
+            padding: 10px 15px; /* Sesuaikan padding untuk link */
+            font-size: 18px; /* Sesuaikan ukuran teks */
+            font-weight: bold; /* Menjadikan teks bold */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-left">
+                <img src="{{ url_for('static', filename='images/logoedubridge.png') }}" alt="Logo">
+                <a class="navbar-brand" href="#">Edu-Bridge</a>
+            </div>
+            <div class="navbar-center">
+                <ul class="nav navbar-nav">
+                    <li><a href="/beranda">BERANDA</a></li>
+                    <li><a href="/recommend">FITUR</a></li>
+                    <li><a href="/tentang">TENTANG</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                <!-- Jika ada item lain di sebelah kanan, tambahkan di sini -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-flex">
+        <div class="container content-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-black" style="font-size:50px">Pencarian Rekomendasi Buku</h1>
+                    <form action="/recommend_books" method="post">
+                        <input name="user_input" type="text" class="form-control"><br>
+                        <input type="submit" class="btn btn-lg btn-warning" value="Submit">
+                    </form>
+                </div>
+            </div>
+
+            {% if data %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-black">Hasil Rekomendasi Buku berdasarkan minat pengguna</h2>
+                </div>
+            </div>
+            <div class="row">
+                {% for i in data %}
+                    <div class="col-md-3" style="margin-top:50px">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="card-img-top" src="{{ i[2] }}" alt="Book Image">
+                                <p class="text-black">{{ i[0] }}</p>
+                                <h4 class="text-black">{{ i[1] }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <div class="logo">
+                    <img id="footer-logo" src="{{ url_for('static', filename='images/logoedubridge.png') }}" alt="Logo">
+                    <div>
+                        <p>Kelompok 27</p>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="description">
+                    <p>Edu-Bridge, merupakan fitur tambahan untuk mengembangkan Perpustakaan Nasional Republik Indonesia. Output dari tugas ini digunakan untuk melengkapi tugas Capstone project (Christian Vieri & Jumaslina).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
