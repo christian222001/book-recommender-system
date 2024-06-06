@@ -27,7 +27,7 @@ Untuk memulai dengan Sistem Rekomendasi Buku, ikuti langkah-langkah berikut:
 
 ## Penggunaan
 Untuk menjalankan aplikasi secara lokal, gunakan perintah berikut:
-      ```bash
+
       python app.py
 
 Buka browser Anda dan pergi ke http://localhost:5000 untuk mengakses aplikasi.
