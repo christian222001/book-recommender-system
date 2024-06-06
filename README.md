@@ -37,25 +37,31 @@ Buka browser Anda dan pergi ke http://localhost:5000 untuk mengakses aplikasi.
 1. app.py
 File aplikasi utama yang menginisialisasi aplikasi Flask dan mengatur routing.
 
-2. templates/
+2. app.js
+File JavaScript utama yang menangani logika sisi klien dan interaksi pengguna dengan antarmuka aplikasi.
+
+3. templates/
 Berisi template HTML untuk halaman web.
 
-3. static/
+4. static/
 Berisi file statis seperti CSS, JavaScript, dan gambar.
 
-4. Books.csv
+5. Books.csv
 Dataset yang berisi informasi buku yang digunakan untuk menghasilkan rekomendasi.
 
-5. models/
+6. models/
 Berisi model collaborative filtering dan skrip pendukung lainnya untuk rekomendasi.
 
-6. Collaborative_Filtering_Book_100%_ipynb
+7. Collaborative_Filtering_Book_100%_ipynb
 Notebook Jupyter yang mencakup implementasi dan pelatihan model collaborative filtering.
 
-7. routes.js
+8. routes.js
 Menentukan rute untuk aplikasi.
 
-8. requirements.txt
+9. scruf
+Komponen keamanan siber yang bertugas untuk melindungi aplikasi dari ancaman keamanan dan memastikan integritas data.
+
+10. requirements.txt
 Daftar semua dependensi Python yang diperlukan untuk menjalankan proyek.
 
 # Penjelasan Model
