@@ -13,22 +13,22 @@ Sistem Rekomendasi Buku ini dirancang untuk membantu pengguna menemukan buku yan
 Untuk memulai dengan Sistem Rekomendasi Buku, ikuti langkah-langkah berikut:
 
 1. Clone repository:
-   ```bash
-   git clone https://github.com/Christian222001/book-recommender-system.git
+      ```bash
+             git clone https://github.com/Christian222001/book-recommender-system.git
    
 2. Masuk ke direktori proyek:
-   ```bash
-   cd book-recommender-system
+      ```bash
+            cd book-recommender-system
    
 3. Install dependencies yang diperlukan:
-   ```bash
-   pip install -r requirements.txt
+      ```bash
+            pip install -r requirements.txt
 
 
 ## Penggunaan
 Untuk menjalankan aplikasi secara lokal, gunakan perintah berikut:
-   ```bash
-   python app.py
+      ```bash
+      python app.py
 
 Buka browser Anda dan pergi ke http://localhost:5000 untuk mengakses aplikasi.
 
