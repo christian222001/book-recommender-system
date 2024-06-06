@@ -15,8 +15,6 @@ Untuk memulai dengan Sistem Rekomendasi Buku, ikuti langkah-langkah berikut:
 1. Clone repository:
    ```bash
    git clone https://github.com/Christian222001/book-recommender-system.git
-
-   # Sistem Rekomendasi Buku
    
 2. Masuk ke direktori proyek:
    ```bash
